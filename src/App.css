@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root, #root>div {
+  height: 100%;
+  margin: 0;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+}
+
+input::placeholder, textarea::placeholder{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+a{
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+li{
+  list-style: none;
+}
+
+.App{
+  position: relative;
+  background: url(./img/shoutout_bg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.input{
+  width: 100%;
+  box-sizing: border-box;
+  height: 38px;
+  border: none;
+  outline: none;
+  padding: 0 0 0.1em 0.5rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0b0b0b;
+  border-radius: 5px;
+  border: 2px solid #e5dce6;
+}
+
+.login{
+  outline: none;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 57px rgba(0,0,0,0.13);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  display: flex;
+  padding: 150px 100px;
+  background: url(./img/login_img.jpg);
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  height: 85%;
+  min-height: 85%;
+}
+
+.SendQuery{
+  outline: none;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 57px rgba(0,0,0,0.13);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 50px;
+}
+
+.sendQueryTitle{
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.field span{
+  font-size: 16px;
+  font-weight: 500;
+  color: #848484;
+  display: inline-block;
+  margin: 0 0 4px 5px;
+}
+
+.loginFormTitle{
+    color: #144c92;
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.loginBtnWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.loginBtn{
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #144c92;
+    font-size: 15px;
+    box-shadow: 0 0 57px rgba(0,0,0,0.13);
+    cursor: pointer;
+    border: none;
+}
+
+.loginBtn:hover{
+  background-color: #083e82;
+}
+
+.loginFormWrapper{
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginImg{
+  flex: 3 1 0;
+}
+
+.loginForm form .field{
+  margin-bottom: 16px;
+}
+
+.queryList{
+  outline: none;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 57px rgba(0,0,0,0.13);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  padding: 150px 100px;
+}
+
+.listBtnImp, .listBtnRead{
+  text-align: center;
+  background: #ea4c89;
+  border-radius: 8px;
+  padding: 10px 16px;
+  display: inline-block;
+  appearance: none;
+  outline: none;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 170px;
+  text-transform: capitalize;
+}
+
+ul.queryItem li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.queryBody{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 250px;
+}
+
+.querySubject{
+  width: 175px;
+}
+
+.queryStatus{
+  width: 100px;
+  background-color: #ebf5ff;
+  border: 1px solid #c2e0ff;
+  color: #144c92;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.queryIndex{
+  width: 20px;
+}
+
+.SendQuery input, .SendQuery textarea{
+  border: 1px solid #eee;
+  background-color: #eee;
+  font-weight: 400;
+  transition: all ease 0.5s;
+} 
+
+.SendQuery input:focus, .SendQuery textarea:focus{
+  border: 1px solid #144c92;
+  background-color: #fff;
+} 
+
+.SendQuery textarea{
+  min-height: 100px;
+}
+
+.sendQueryBtn{
+  color: white;
+  padding: 16px;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #144c92;
+  font-size: 15px;
+  box-shadow: 0 0 57px rgba(0,0,0,0.13);
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  transition: all ease 0.5s;
+}
+
+.sendQueryBtn:hover{
+  background-color: #083e82;
+}
+
+.SendQuery .field{
+  margin-bottom: 20px;
+}
