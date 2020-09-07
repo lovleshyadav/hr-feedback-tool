@@ -26,6 +26,9 @@ function SendQuery() {
         }).then((response) => response.json()).then((result) => {
                 console.log(result)
         });
+
+        //Send email
+
     }
   return (
 
