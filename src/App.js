@@ -68,9 +68,9 @@ toggleRead = (id) => {
       console.log(this.state.querylist);
     return (
       <div className="App">
-         {/*<div className="queryList"><QueryList querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead}/></div>*/}
+         <div className="queryList"><QueryList querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead}/></div>
         {/*<Login />*/}
-         <SendQuery />
+        {/* <SendQuery />*/}
       </div>
     );
   }

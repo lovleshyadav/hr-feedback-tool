@@ -11,6 +11,21 @@ function SendQuery() {
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        var payload = {
+            "subject": subject,
+            "query": query
+        };
+
+        fetch('/putFeedbacks', {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).then((response) => response.json()).then((result) => {
+                console.log(result)
+        });
     }
   return (
 
