@@ -1,0 +1,31 @@
+[{
+"id": 1,
+"read": false,
+"important": false,
+"querySubject": "query 1",
+"queryBody": "query 1: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+"status": "pending",
+"impBtnValue":"important",
+"readBtnValue":"read"
+},
+{
+"id": 2,
+"read": false,
+"important": false,
+"querySubject": "query 2",
+"queryBody": "query 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+"status": "action taken",
+"impBtnValue":"important",
+"readBtnValue":"read"
+},
+{
+"id": 3,
+"read": false,
+"important": false,
+"querySubject": "query 3",
+"queryBody": "query 3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+"status": "completed",
+"impBtnValue":"important",
+"readBtnValue":"read"
+}
+]

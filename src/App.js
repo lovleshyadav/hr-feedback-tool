@@ -8,39 +8,25 @@ import './App.css';
 class App extends Component {
 
   state = {
-    querylist: [
-      {
-        id: 1,
-        read: false,
-        important: false,
-        querySubject: 'query 1',
-        queryBody: 'query 1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        status: 'pending',
-        impBtnValue:'important',
-        readBtnValue:'read' 
-      },
-      {
-        id: 2,
-        read: false,
-        important: false,
-        querySubject: 'query 2',
-        queryBody: 'query 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        status: 'action taken',
-        impBtnValue:'important',
-        readBtnValue:'read'    
-      },
-      {
-        id: 3,
-        read: false,
-        important: false,
-        querySubject: 'query 3',
-        queryBody: 'query 3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-        status: 'completed',
-        impBtnValue:'important',
-        readBtnValue:'read'
-      }
-    ]
+      querylist: []
   }
+
+    componentDidMount() {
+        // Call our fetch function below once the component mounts
+        this.callBackendAPI()
+            .then(res => this.setState({querylist: res.data}))
+            .catch(err => console.log(err));
+    }
+    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+    callBackendAPI = async () => {
+        const response = await fetch('/getFeedbacks');
+        const body = await response.json();
+        console.log(body);
+        if (response.status !== 200) {
+            throw Error(body.message)
+        }
+        return body;
+    };
 
   toggleImportant = (id) => {
     this.setState({ querylist: this.state.querylist.map(
@@ -79,11 +65,12 @@ toggleRead = (id) => {
 }
 
   render(){
+      console.log(this.state.querylist);
     return (
       <div className="App">
-        {/* <div className="queryList"><QueryList querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead}/></div> */}
-        <Login />
-        {/* <SendQuery /> */}
+         {/*<div className="queryList"><QueryList querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead}/></div>*/}
+        {/*<Login />*/}
+         <SendQuery />
       </div>
     );
   }
