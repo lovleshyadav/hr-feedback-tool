@@ -41,7 +41,6 @@ export class QueryItem extends Component {
         const  { id, querySubject , queryBody, status, impBtnValue, readBtnValue} = this.props.query;
         const index = this.props.index;
         return (
-            <div className="queryItemWrapper">
                 <ul style={this.getStyleForQuery()} className="queryItem">
                     <li>
                         <p className="queryIndex">{index+'.'}</p>
@@ -52,7 +51,6 @@ export class QueryItem extends Component {
                         <input type='button' className="listBtnRead" onClick={this.props.toggleRead.bind(this, id)} value={'mark as ' + readBtnValue}/>
                     </li>
                 </ul>
-            </div>
         )
     }
 }

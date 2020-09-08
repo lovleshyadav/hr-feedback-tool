@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
+import {BrowserRouter as Router, NavLink } from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
 import Login from './components/Login';
 import SendQuery from './components/SendQuery';
 import QueryList from './components/QueryList';
+import QueryListTable from './components/QueryListTable';
 
 import './App.css';
 
 class App extends Component {
 
   state = {
+      loggedIn: false,
       querylist: []
   }
 
@@ -65,13 +70,23 @@ toggleRead = (id) => {
 }
 
   render(){
-      console.log(this.state.querylist);
+      // console.log(this.state.querylist);
     return (
+      <Router>
       <div className="App">
-         <div className="queryList"><QueryList querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead}/></div>
-        {/*<Login />*/}
-        {/* <SendQuery />*/}
+        <div className="NavBarWrapper">
+          <div className="NavBar">
+            <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
+            <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
+          </div>
+        </div>
+        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn}/> }/>
+        <Route path="/sendquery" component={SendQuery}/>
+        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
       </div>
+
+      
+      </Router>
     );
   }
   
