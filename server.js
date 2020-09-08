@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 const fs = require('fs');
+const nodemailer = require('nodemailer');
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -42,5 +43,31 @@ app.post('/putFeedbacks', (req, res) => {
     });
 
     console.log('Feedback saved', newFeedback.id);
+
+    console.log('Sending email');
+    //Send email
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'avi.mzn@gmail.com',
+            pass: 'anantmaygmail'
+        }
+    });
+
+    var mailOptions = {
+        from: 'avi.mzn@gmail.com',
+        to: 'lovlesh.y@taboola.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+            console.log(error);
+        } else {
+            console.log('Email sent: ' + info.response);
+        }
+    });
     res.send("PUT Request Called")
 })
