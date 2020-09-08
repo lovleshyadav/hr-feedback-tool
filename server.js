@@ -57,9 +57,9 @@ app.post('/putFeedbacks', (req, res) => {
 
     var mailOptions = {
         from: 'avi.mzn@gmail.com',
-        to: 'lovlesh.y@taboola.com',
-        subject: 'Sending Email using Node.js',
-        text: 'That was easy!'
+        to: 'ishank.g@taboola.com',
+        subject: req.body.subject,
+        text: req.body.query
     };
 
     transporter.sendMail(mailOptions, function(error, info){
