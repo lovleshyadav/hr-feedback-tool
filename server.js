@@ -46,28 +46,29 @@ app.post('/putFeedbacks', (req, res) => {
 
     console.log('Sending email');
     //Send email
+    /* Will Uncomment you someday baby
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'avi.mzn@gmail.com',
+                pass: 'anantmaygmail'
+            }
+        });
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'avi.mzn@gmail.com',
-            pass: 'anantmaygmail'
-        }
-    });
+        var mailOptions = {
+            from: 'avi.mzn@gmail.com',
+            to: 'ishank.g@taboola.com',
+            subject: req.body.subject,
+            text: req.body.query
+        };
 
-    var mailOptions = {
-        from: 'avi.mzn@gmail.com',
-        to: 'ishank.g@taboola.com',
-        subject: req.body.subject,
-        text: req.body.query
-    };
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-            console.log(error);
-        } else {
-            console.log('Email sent: ' + info.response);
-        }
-    });
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
+     */
     res.send("PUT Request Called")
 })
