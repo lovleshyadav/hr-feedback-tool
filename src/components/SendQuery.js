@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SendQuery() {
+function SendQuery({userHash}) {
 
     const [subject, setSubject] = useState("");
     const [query, setQuery] = useState("");
@@ -16,7 +16,7 @@ function SendQuery() {
         var payload = {
             "subject": subject,
             "query": query,
-            "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf"
+            "userHash": userHash
         };
 
         fetch('/putFeedbacks', {

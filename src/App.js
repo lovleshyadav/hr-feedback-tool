@@ -8,6 +8,7 @@ import QueryList from './components/QueryList';
 import QueryListTable from './components/QueryListTable';
 
 import './App.css';
+import {sha256} from "js-sha256";
 
 class App extends Component {
 
@@ -72,13 +73,35 @@ toggleRead = (id) => {
 }
 
 // This will fetch Query list on the basis of hash provided on login
-handleLogin = (hash) => {
-      console.log("hash", hash);
-     this.setState({userHash:hash, loggedIn: true} );
-}
+handleLogin = async (email,password,event) => {
+
+    // Validation is not required here, so we just need to update the state
+    // console.log(email+ ' ' +password);
+    // console.log(sha256(email+password));
+    let userHash = sha256(email+password);
+
+    this.setState({userHash: userHash, loggedIn: true} );
+
+    // Now get user queries
+    var payload = {
+        "userHash": userHash
+    };
+
+    // Query list is now updated
+    await fetch('/getUserFeedbacks', {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(async (response) => response.json()).then(async (result) => {
+        await this.setState({querylist: result.data})
+    });
+
+    event.preventDefault();
+};
 
   render(){
-      // console.log(this.state.querylist);
     return (
       <Router>
       <div className="App">
@@ -88,8 +111,9 @@ handleLogin = (hash) => {
             <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
           </div>
         </div>
+        <Route path="/" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
         <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-        <Route path="/sendquery" component={SendQuery}/>
+        <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash}/>}/>
         <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
       </div>
 
