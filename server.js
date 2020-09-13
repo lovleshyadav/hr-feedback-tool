@@ -142,5 +142,5 @@ app.post('/putFeedbacks', (req, res) => {
             }
         });
      */
-    res.send("PUT Feedback Request Called")
+    res.send({data: feedbacks});
 });

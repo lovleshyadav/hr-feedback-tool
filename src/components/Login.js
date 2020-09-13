@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Redirect } from 'react-router-dom';
 
-function Login({handleLogin}) {
+function Login({handleLogin,loggedIn}) {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -8,6 +9,10 @@ function Login({handleLogin}) {
     function validateForm() {
         return email.length > 0 && password.length > 0;
     }
+
+    if (loggedIn)
+        return(<Redirect push to="/QueryListTable"/>);
+
 
   return (
     <div className="login">
