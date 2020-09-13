@@ -295,3 +295,49 @@ ul.queryItem li{
 .SendQuery .field{
   margin-bottom: 20px;
 }
+
+.chatScreenWrapper {
+  outline: none;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 57px rgba(0,0,0,0.13);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 25px;
+  min-width: 700px;
+}
+
+.chatFormWrapper form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatSendQueryBtn{
+  color: white;
+  padding: 16px;
+  text-align: center;
+  border-radius: 50%;
+  width: 50px;
+  background-color: #144c92;
+  font-size: 15px;
+  box-shadow: 0 0 57px rgba(0,0,0,0.13);
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  transition: all ease 0.5s;
+  background: url('./img/send_120237.png') no-repeat;
+  background-size: contain;
+  margin-left: 10px;
+}
+
+.chatFormWrapper form .field{
+  width: 100%;
+}
+
+.queryChatWindow{
+  overflow-y: scroll;
+  height: 500px;
+}
