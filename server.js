@@ -49,7 +49,7 @@ app.post('/responseToQuery', (req, res) => {
     let rawdata = fs.readFileSync('feedbacks.json');
     let feedbacks = JSON.parse(rawdata);
     let user = "normal";
-
+    let payload = {};
     if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
         user = "admin";
     }
@@ -64,6 +64,7 @@ app.post('/responseToQuery', (req, res) => {
             };
 
             feedback.response.push(addNewResponse);
+            payload = feedback;
         }
     }
 
@@ -75,7 +76,8 @@ app.post('/responseToQuery', (req, res) => {
     });
 
     console.log('Response saved for feedback: ', req.body.queryId);
-    res.send("Response to Query Request Called")
+    // Sending User Feedbacks
+    res.send({data: payload});
 });
 
 // Save Feedback from user
