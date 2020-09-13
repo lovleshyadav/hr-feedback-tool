@@ -6,16 +6,22 @@ function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleLogin(){
-        console.log(email+ ' ' +password);
-        console.log(sha256(email+password));
-    }
-
     function validateForm() {
         return email.length > 0 && password.length > 0;
     }
 
     function handleSubmit(event) {
+        // Validation is not required here, so we just need to update the state
+        console.log(email+ ' ' +password);
+        console.log(sha256(email+password));
+
+        // Fix: Call API "getUserFeedbacks", it will give query list based on "userHash"
+        //admin admin, user user, test test (try these users)
+
+        // this.props.handleLogin(sha256(email+password));
+        // console.log(this.props.history);
+        // this.props.history.push('/QueryListTable/');
+        // handleLogin(sha256(email+password));
         event.preventDefault();
     }
   return (
@@ -33,7 +39,7 @@ function Login() {
                         <input type="password" id="password" className="input" placeholder="" value={password} onChange={e => setPassword(e.target.value)} />
                     </div>
                     <div className="loginBtnWrapper">
-                        <button className="loginBtn" disabled={!validateForm()} onClick={handleLogin()}>Login</button>
+                        <button className="loginBtn" disabled={!validateForm()} >Login</button>
                     </div>
                 </form>
             </div>

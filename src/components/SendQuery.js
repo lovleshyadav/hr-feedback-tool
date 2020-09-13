@@ -12,9 +12,11 @@ function SendQuery() {
     function handleSubmit(event) {
         event.preventDefault();
 
+        // Fix: Send original hash instead of fixed one
         var payload = {
             "subject": subject,
-            "query": query
+            "query": query,
+            "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf"
         };
 
         fetch('/putFeedbacks', {

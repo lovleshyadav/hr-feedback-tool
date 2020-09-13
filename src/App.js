@@ -13,7 +13,9 @@ class App extends Component {
 
   state = {
       loggedIn: false,
-      querylist: []
+      querylist: [],
+      userHash: ""
+
   }
 
     componentDidMount() {
@@ -69,6 +71,12 @@ toggleRead = (id) => {
   ) })
 }
 
+// This will fetch Query list on the basis of hash provided on login
+handleLogin = (hash) => {
+      console.log("hash", hash);
+     this.setState({userHash:hash, loggedIn: true} );
+}
+
   render(){
       // console.log(this.state.querylist);
     return (
@@ -80,7 +88,7 @@ toggleRead = (id) => {
             <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
           </div>
         </div>
-        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn}/> }/>
+        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
         <Route path="/sendquery" component={SendQuery}/>
         <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
       </div>

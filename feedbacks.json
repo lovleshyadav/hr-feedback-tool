@@ -1,90 +1,240 @@
 [
   {
-    "id": 1,
+    "id": 1.0234238,
     "read": false,
     "important": false,
     "querySubject": "query 1",
-    "queryBody": "query 1: Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "queryBody": "test test query 1",
     "status": "pending",
     "impBtnValue": "important",
-    "readBtnValue": "read"
+    "readBtnValue": "read",
+    "userHash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
+    "date": "",
+    "response": [
+      {
+        "user": "normal",
+        "response": "pehla response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "teesra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "admin dusra response",
+        "date": "",
+        "time": ""
+      }
+    ]
   },
   {
     "id": 2,
     "read": false,
     "important": false,
     "querySubject": "query 2",
-    "queryBody": "query 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "queryBody": "test test query 2",
     "status": "action taken",
     "impBtnValue": "important",
-    "readBtnValue": "read"
+    "readBtnValue": "read",
+    "userHash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
+    "date": "",
+    "response": [
+      {
+        "user": "normal",
+        "response": "pehla response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      }
+    ]
   },
   {
     "id": 3,
     "read": false,
     "important": false,
     "querySubject": "query 3",
-    "queryBody": "query 3 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "queryBody": "test test query 3",
     "status": "completed",
     "impBtnValue": "important",
-    "readBtnValue": "read"
+    "readBtnValue": "read",
+    "userHash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
+    "date": "",
+    "response": [
+      {
+        "user": "normal",
+        "response": "pehla response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      }
+    ]
   },
   {
-    "id": 0.24063900943429517,
+    "id": 4,
+    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
+    "date": "",
     "read": false,
     "important": false,
-    "querySubject": "yo",
-    "queryBody": "ho",
+    "querySubject": "User User query 1",
+    "queryBody": "lorem ipsum",
+    "response": [
+      {
+        "user": "normal",
+        "response": "pehla response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "dusra response",
+        "date": "",
+        "time": ""
+      }
+    ],
     "status": "pending",
     "impBtnValue": "important",
     "readBtnValue": "read"
   },
   {
-    "id": 0.21288093237643602,
+    "id": 5,
+    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
+    "date": "",
     "read": false,
     "important": false,
-    "querySubject": "yoyo",
-    "queryBody": "hoho\n",
+    "querySubject": "user user query 2",
+    "queryBody": "asdasd",
+    "response": [
+      {
+        "user": "normal",
+        "response": "1 response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "2 response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "12 response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "12 response",
+        "date": "",
+        "time": ""
+      }
+    ],
     "status": "pending",
     "impBtnValue": "important",
     "readBtnValue": "read"
   },
   {
-    "id": 0.9417612902770902,
+    "id": 6,
+    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
+    "date": "",
     "read": false,
     "important": false,
-    "querySubject": "ishank",
-    "queryBody": "ishank new test",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read"
-  },
-  {
-    "id": 0.5247170239313785,
-    "read": false,
-    "important": false,
-    "querySubject": "huvjvjgcgv",
-    "queryBody": "logigkhvkhvg\n",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read"
-  },
-  {
-    "id": 0.9758929298534003,
-    "read": false,
-    "important": false,
-    "querySubject": "First query",
-    "queryBody": "This is first query",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read"
-  },
-  {
-    "id": 0.0024526147925791886,
-    "read": false,
-    "important": false,
-    "querySubject": "First query",
-    "queryBody": "This is first query",
+    "querySubject": "user user",
+    "queryBody": "3rd query",
+    "response": [
+      {
+        "user": "normal",
+        "response": "I response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "admin",
+        "response": "II response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "II I response",
+        "date": "",
+        "time": ""
+      },
+      {
+        "user": "normal",
+        "response": "II II response",
+        "date": "",
+        "time": ""
+      }
+    ],
     "status": "pending",
     "impBtnValue": "important",
     "readBtnValue": "read"
