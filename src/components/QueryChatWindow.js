@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import QueryChatForm from './QueryChatForm';
 import QueryChat from './QueryChat';
 
-function QueryChatWindow () {
+class QueryChatWindow extends Component {
 
-    return (
-        <div>
+    render(){
+        // console.log(this.props.location.queryresponse);
+        return (
             <div className="chatScreenWrapper">
-                <QueryChat />
+                <div className="queryChatWindow">
+                    <QueryChat queryresponse={this.props.location.queryresponse}/>
+                </div>
                 <QueryChatForm />
             </div>
-        </div>
-    )
+
+        )
+    }
+    
 }
 
 export default QueryChatWindow;

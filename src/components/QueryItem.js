@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export class QueryItem extends Component {
 
@@ -41,16 +42,23 @@ export class QueryItem extends Component {
         const  { id, querySubject , queryBody, status, impBtnValue, readBtnValue} = this.props.query;
         const index = this.props.index;
         return (
+            <Link to={{
+                pathname:'/queryChatWindow',
+                queryresponse:{
+                    response: this.props.query
+                }
+            }} >
                 <ul style={this.getStyleForQuery()} className="queryItem">
                     <li>
                         <p className="queryIndex">{index+'.'}</p>
                         <p className="querySubject" style={this.getStyleForQuerySubject()}>{querySubject}</p>
                         <p className="queryBody">{queryBody}</p>
-                        <p className="queryStatus" style={this.getStyleForStatus()}>{status}</p>
-                        <input type='button' className="listBtnImp" onClick={this.props.toggleImportant.bind(this, id)} value={'mark as '+ impBtnValue}/>
-                        <input type='button' className="listBtnRead" onClick={this.props.toggleRead.bind(this, id)} value={'mark as ' + readBtnValue}/>
+                        {/* <p className="queryStatus" style={this.getStyleForStatus()}>{status}</p> */}
+                        {/* <input type='button' className="listBtnImp" onClick={this.props.toggleImportant.bind(this, id)} value={'mark as '+ impBtnValue}/> */}
+                        {/* <input type='button' className="listBtnRead" onClick={this.props.toggleRead.bind(this, id)} value={'mark as ' + readBtnValue}/> */}
                     </li>
                 </ul>
+                </Link>
         )
     }
 }

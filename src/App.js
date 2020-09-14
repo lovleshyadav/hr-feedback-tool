@@ -4,8 +4,8 @@ import Route from 'react-router-dom/Route';
 
 import Login from './components/Login';
 import SendQuery from './components/SendQuery';
-import QueryList from './components/QueryList';
 import QueryListTable from './components/QueryListTable';
+import QueryChatWindow from './components/QueryChatWindow';
 
 import './App.css';
 import {sha256} from "js-sha256";
@@ -104,20 +104,18 @@ handleLogin = async (email,password,event) => {
   render(){
     return (
       <Router>
-      <div className="App">
-        <div className="NavBarWrapper">
-          <div className="NavBar">
-            <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
-            <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
+        <div className="App">
+          <div className="NavBarWrapper">
+            <div className="NavBar">
+              <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
+              <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
+            </div>
           </div>
+          <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
+          <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash}/>}/>
+          <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
+          <Route path="/queryChatWindow" component={QueryChatWindow}/>
         </div>
-        <Route path="/" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-        <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash}/>}/>
-        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
-      </div>
-
-      
       </Router>
     );
   }
