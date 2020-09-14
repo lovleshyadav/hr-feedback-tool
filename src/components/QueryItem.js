@@ -46,7 +46,8 @@ export class QueryItem extends Component {
                 pathname:'/queryChatWindow',
                 queryresponse:{
                     response: this.props.query
-                }
+                },
+                userHash: this.props.userHash
             }} >
                 <ul style={this.getStyleForQuery()} className="queryItem">
                     <li>

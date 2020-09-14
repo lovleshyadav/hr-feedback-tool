@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function QueryChatForm() {
+function QueryChatForm({userHash, queryresponse}) {
 
     const [query, setQuery] = useState("");
 
@@ -11,14 +11,14 @@ function QueryChatForm() {
     function handleSubmit(event) {
         event.preventDefault();
 
-        // Fix: Send original hash instead of fixed one
+        // Send the response to DB
         var payload = {
-            // "subject": subject,
-            "query": query,
-            "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf"
+            "userHash": userHash,
+            "queryId": queryresponse.response.id,
+            "response": query
         };
 
-        fetch('/putFeedbacks', {
+        fetch('/responseToQuery', {
             method: "POST",
             headers: {
                 'Content-type': 'application/json'

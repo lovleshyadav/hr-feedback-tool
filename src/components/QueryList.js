@@ -8,7 +8,7 @@ class QueryList extends Component {
         console.log(this.props.querylist);
         return this.props.querylist.map((query, index) => (
             <div>
-                <QueryItem key={query.id} query={query} index={index+1} toggleImportant={this.props.toggleImportant} toggleRead={this.props.toggleRead}/>
+                <QueryItem key={query.id} query={query} index={index+1} userHash={this.props.userHash} toggleImportant={this.props.toggleImportant} toggleRead={this.props.toggleRead}/>
             </div>
         ));
     }

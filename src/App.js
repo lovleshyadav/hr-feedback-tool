@@ -122,6 +122,24 @@ handleSendQuery = async (subject,query,event) => {
     });
 };
 
+updateQuerylist = async () => {
+    // Now get user queries
+    var payload = {
+        "userHash": this.state.userHash
+    };
+
+    // Query list is now updated
+    await fetch('/getUserFeedbacks', {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(async (response) => response.json()).then(async (result) => {
+        await this.setState({querylist: result.data})
+    });
+};
+
   render(){
     return (
       <Router>
@@ -135,7 +153,7 @@ handleSendQuery = async (subject,query,event) => {
         <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
         <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
         <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
-        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
+        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
         <Route path="/queryChatWindow" component={QueryChatWindow}/>
       </div>
       </Router>

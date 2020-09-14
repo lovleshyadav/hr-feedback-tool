@@ -7,7 +7,7 @@ class QueryListTable extends Component {
         return (
             <div className="queryList">
                 <QueryListNav/>
-                <QueryList querylist={this.props.querylist} toggleImportant={this.props.toggleImportant} toggleRead={this.props.toggleRead}/>
+                <QueryList querylist={this.props.querylist} userHash={this.props.userHash} toggleImportant={this.props.toggleImportant} toggleRead={this.props.toggleRead}/>
             </div>
         )
     }

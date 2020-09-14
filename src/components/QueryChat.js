@@ -7,7 +7,7 @@ class QueryChat extends Component {
         // console.log(this.props.queryresponse.response.response);
 
         return this.props.queryresponse.response.response.map((response) => (
-            <ChatResponse response={response}/>         
+            <ChatResponse response={response} userHash={this.props.userHash}/>
         ));
     }
 }
