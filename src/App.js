@@ -21,9 +21,9 @@ class App extends Component {
 
     componentDidMount() {
         // Call our fetch function below once the component mounts
-        this.callBackendAPI()
-            .then(res => this.setState({querylist: res.data}))
-            .catch(err => console.log(err));
+        // this.callBackendAPI()
+        //     .then(res => this.setState({querylist: res.data}))
+        //      .catch(err => console.log(err));
     }
     // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
     callBackendAPI = async () => {
@@ -101,6 +101,27 @@ handleLogin = async (email,password,event) => {
     event.preventDefault();
 };
 
+handleSendQuery = async (subject,query,event) => {
+    event.preventDefault();
+
+    // Sending new query to DB
+    var payload = {
+        "subject": subject,
+        "query": query,
+        "userHash": this.state.userHash
+    };
+
+    await fetch('/putFeedbacks', {
+        method: "POST",
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    }).then(async (response) => response.json()).then(async (result) => {
+        await this.setState({querylist: result.data})
+    });
+};
+
   render(){
     return (
       <Router>
@@ -111,11 +132,12 @@ handleLogin = async (email,password,event) => {
               <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
             </div>
           </div>
-          <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-          <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash}/>}/>
-          <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
-          <Route path="/queryChatWindow" component={QueryChatWindow}/>
-        </div>
+        <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
+        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
+        <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
+        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
+        <Route path="/queryChatWindow" component={QueryChatWindow}/>
+      </div>
       </Router>
     );
   }

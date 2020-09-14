@@ -67,7 +67,6 @@ app.post('/responseToQuery', (req, res) => {
             payload = feedback;
         }
     }
-
     let data = JSON.stringify(feedbacks, null, 2);
 
     fs.writeFile('feedbacks.json', data, (err) => {
@@ -143,5 +142,5 @@ app.post('/putFeedbacks', (req, res) => {
             }
         });
      */
-    res.send("PUT Feedback Request Called")
+    res.send({data: feedbacks});
 });

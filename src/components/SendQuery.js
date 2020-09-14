@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SendQuery({userHash}) {
+function SendQuery({handleSendQuery}) {
 
     const [subject, setSubject] = useState("");
     const [query, setQuery] = useState("");
@@ -9,33 +9,13 @@ function SendQuery({userHash}) {
         return subject.length > 0 && query.length > 0;
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-
-        // Fix: Send original hash instead of fixed one
-        var payload = {
-            "subject": subject,
-            "query": query,
-            "userHash": userHash
-        };
-
-        fetch('/putFeedbacks', {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        }).then((response) => response.json()).then((result) => {
-                console.log(result)
-        });
-    }
   return (
 
     <div className="SendQuery">
      <div className="sendQueryTitle">Send Your Query!</div>
     <div className="query">
         <div className="formWrapper">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSendQuery.bind(this, subject, query)}>
                 <div className="field">
                     <input type="text" id="username" className="input" placeholder="Subject" value={subject} onChange={e => setSubject(e.target.value)} />
                 </div>
