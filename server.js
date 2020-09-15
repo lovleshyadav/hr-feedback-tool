@@ -14,7 +14,7 @@ app.get('/getFeedbacks', (req, res) => {
     res.send({data: feedbacks});
 });
 
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
