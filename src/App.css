@@ -94,6 +94,68 @@ li{
   min-height: 85%;
 }
 
+.loginHelp{
+  position: relative;
+  color: #fff;
+  font-size: 14px;
+  background-color: #000;
+  border-radius: 50%;
+  padding: 5px;
+  height: 26px;
+  width: 26px;
+  text-align: center;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.loginHelp::after{
+ content:'Please use some unique user name (eg: Taboola email) and password if you are using the tool for first time';
+ position: absolute;
+ bottom: 50%;
+ right: -270px;
+ background-color: #000;
+ border-radius: 5px;
+ color: #fff;
+ visibility: hidden;
+ padding: 5px;
+ max-width: 250px;
+ transform: translateY(50%);
+ font-size: 12px;
+}
+
+.loginHelp::before{
+  content:'';
+  position: absolute;
+  width: 0;
+	height: 0;
+	border-top: 6px solid transparent;
+  border-right: 12px solid #000;
+  border-bottom: 6px solid transparent;
+  visibility: hidden;
+  right: -12px;
+}
+
+.loginHelp:hover::after, .loginHelp:hover::before{
+  visibility: visible;
+}
+
+.loginDisclaimer{
+  position: absolute;
+  bottom: 24px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  font-weight: bold;
+  left: 50px;
+  left: 50px;
+  width: calc(100% - 96px);
+}
+
+.loginDisclaimer p{
+  font-weight: normal;
+}
+
 .SendQuery{
   outline: none;
   border-radius: 10px;
@@ -124,6 +186,8 @@ li{
     color: #144c92;
     font-size: 32px;
     margin-bottom: 18px;
+    display: flex;
+    align-items: center;
 }
 
 .loginBtnWrapper{

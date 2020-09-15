@@ -6,7 +6,7 @@ export class QueryListNav extends Component {
             <div className="queryListHeading">
                 <p className="serialNumberHeading">S. No.</p>
                 <p className="subjectHeading" >Subject</p>
-                <p className="bodyHeading">Body</p>
+                <p className="bodyHeading">Message</p>
                 {/* <p className="statusHeading">Status</p>
                 <p className="BtnHeading"></p>
                 <p className="BtnHeading"></p> */}

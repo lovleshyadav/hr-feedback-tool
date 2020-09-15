@@ -28,7 +28,9 @@ class ChatResponse extends Component {
                 fontSize: '15px',
                 padding: '5px 10px',
                 backgroundColor: '#3c72a7',
-                borderRadius: '10px'
+                borderRadius: '10px',
+                float: 'right',
+                width: '70%'
             }
         }
 
@@ -38,7 +40,9 @@ class ChatResponse extends Component {
                 fontSize: '15px',
                 padding: '5px 10px',
                 backgroundColor: '#797979',
-                borderRadius: '10px'
+                borderRadius: '10px',
+                width: '70%',
+                float: 'left'
             }
         }
     }
