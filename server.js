@@ -142,5 +142,19 @@ app.post('/putFeedbacks', (req, res) => {
             }
         });
      */
-    res.send({data: feedbacks});
+
+    let payload = [];
+
+    if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+        // Sending complete data for admin
+        payload = feedbacks;
+    } else {
+        for (const feedback of feedbacks) {
+            if (feedback.userHash === req.body.userHash) {
+                payload.push(feedback);
+            }
+        }
+    }
+    // Sending User Feedbacks
+    res.send({data: payload});
 });
