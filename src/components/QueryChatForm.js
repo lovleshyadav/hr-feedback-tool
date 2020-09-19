@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-
-function QueryChatForm({userHash, queryresponse}) {
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+// import {}
+function QueryChatForm({userHash, queryresponse, addUserresponse}) {
 
     const [query, setQuery] = useState("");
+    const feedbacks = useSelector(state => state.feedbacks);
 
     function validateForm() {
         return query.length > 0;
@@ -32,7 +34,7 @@ function QueryChatForm({userHash, queryresponse}) {
     return (
         <div>
             <div className="chatFormWrapper">
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={addUserresponse.bind(this, query, queryresponse.response.id, userHash)}>
                             <div className="field">
                                 <input id="query" type="text" className="input" placeholder="Type your reply here!" value={query} onChange={e => setQuery(e.target.value)} />
                             </div>
