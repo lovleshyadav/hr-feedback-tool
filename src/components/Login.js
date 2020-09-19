@@ -17,7 +17,7 @@ function Login({handleLogin,loggedIn}) {
   return (
     <div className="login">
         <div className="loginFormWrapper">
-            <div className="loginFormTitle">Log In</div>
+            <div className="loginFormTitle">Login <span className="loginHelp">?</span></div>
             <div className="loginForm">
                 <form onSubmit={handleLogin.bind(this, email, password)}>
                     <div className="field">
@@ -35,6 +35,9 @@ function Login({handleLogin,loggedIn}) {
             </div>
         </div>
         <div className="loginImg"></div>
+        <div className="loginDisclaimer">
+            Disclaimer: <p>we do not store any information provided here and so we will not be able to retrive your account in case you forget your username and password so please keep it stored somewhere</p>
+        </div>
         
     </div>
   );
