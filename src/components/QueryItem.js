@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import {connect} from "react-redux";
+import {selectFeedback} from "../actions";
 
 export class QueryItem extends Component {
 
@@ -49,7 +51,9 @@ export class QueryItem extends Component {
                 },
                 userHash: this.props.userHash
             }} >
-                <ul style={this.getStyleForQuery()} className="queryItem">
+                <ul style={this.getStyleForQuery()} onClick={async () => {
+                    await this.props.selectFeedback(id);
+                }}  className="queryItem">
                     <li>
                         <p className="queryIndex">{index+'.'}</p>
                         <p className="querySubject" style={this.getStyleForQuerySubject()}>{querySubject}</p>
@@ -68,6 +72,17 @@ QueryItem.propTypes = {
     query: PropTypes.object.isRequired
 }
 
+const mapStateToProps = state => ({
+    selectedFeedback: state.selectedFeedback
+});
 
+const mapDispatchToProps = () => {
+    return {
+        selectFeedback
+    };
+};
 
-export default QueryItem
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps()
+)(QueryItem);

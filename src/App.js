@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, NavLink } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
+import {connect} from "react-redux";
+import {addUserHash, isLoggedIn, getUserFeedbacks} from "./actions";
 
 import Login from './components/Login';
 import SendQuery from './components/SendQuery';
@@ -9,6 +11,8 @@ import QueryChatWindow from './components/QueryChatWindow';
 
 import './App.css';
 import {sha256} from "js-sha256";
+import {selectFeedback} from "./actions";
+import {QueryItem} from "./components/QueryItem";
 
 class App extends Component {
 
@@ -76,8 +80,6 @@ toggleRead = (id) => {
 handleLogin = async (email,password,event) => {
 
     // Validation is not required here, so we just need to update the state
-    // console.log(email+ ' ' +password);
-    // console.log(sha256(email+password));
     let userHash = sha256(email+password);
 
     this.setState({userHash: userHash, loggedIn: true} );
@@ -87,6 +89,9 @@ handleLogin = async (email,password,event) => {
         "userHash": userHash
     };
 
+    // Updating redux file
+    this.props.isLoggedIn();
+
     // Query list is now updated
     await fetch('/getUserFeedbacks', {
         method: "POST",
@@ -95,7 +100,9 @@ handleLogin = async (email,password,event) => {
         },
         body: JSON.stringify(payload)
     }).then(async (response) => response.json()).then(async (result) => {
-        await this.setState({querylist: result.data})
+        await this.setState({querylist: result.data});
+        await this.props.getUserFeedbacks(result.data);
+        await this.props.addUserHash(userHash);
     });
 
     event.preventDefault();
@@ -122,44 +129,77 @@ handleSendQuery = async (subject,query,event) => {
     });
 };
 
-updateQuerylist = async () => {
-    // Now get user queries
+addUserresponse = async (response, queryId, userHash, event) => {
+    event.preventDefault();
+
+    // Send the response to DB
     var payload = {
-        "userHash": this.state.userHash
+        "userHash": userHash,
+        "queryId": queryId,
+        "response": response
     };
 
-    // Query list is now updated
-    await fetch('/getUserFeedbacks', {
+    fetch('/responseToQuery', {
         method: "POST",
         headers: {
             'Content-type': 'application/json'
         },
         body: JSON.stringify(payload)
-    }).then(async (response) => response.json()).then(async (result) => {
+    }).then((response) => response.json()).then(async (result) => {
         await this.setState({querylist: result.data})
     });
+
+    // Now get user queries
+    // var payload = {
+    //     "userHash": this.state.userHash
+    // };
+    //
+    // // Query list is now updated
+    // await fetch('/getUserFeedbacks', {
+    //     method: "POST",
+    //     headers: {
+    //         'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify(payload)
+    // }).then(async (response) => response.json()).then(async (result) => {
+    //     await this.setState({querylist: result.data})
+    // });
 };
 
   render(){
-    return (
-      <Router>
-        <div className="App">
-          <div className="NavBarWrapper">
-            <div className="NavBar">
-              <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
-              <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
-            </div>
+      return (
+          <Router>
+            <div className="App">
+              <div className="NavBarWrapper">
+                <div className="NavBar">
+                  <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
+                  <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
+                </div>
+              </div>
+            <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
+            <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
+            <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
+            <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
+            <Route path="/queryChatWindow" component={() => <QueryChatWindow userHash={this.state.userHash} querylist={this.state.querylist} addUserresponse={this.addUserresponse}/>}/>
           </div>
-        <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-        <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-        <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
-        <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
-        <Route path="/queryChatWindow" component={QueryChatWindow}/>
-      </div>
-      </Router>
-    );
+          </Router>
+      );
   }
   
 }
 
-export default App;
+const mapStateToProps = state => ({
+});
+
+const mapDispatchToProps = () => {
+    return {
+        addUserHash,
+        isLoggedIn,
+        getUserFeedbacks
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps()
+)(App);
