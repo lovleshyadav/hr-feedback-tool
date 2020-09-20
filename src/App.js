@@ -130,7 +130,7 @@ handleSendQuery = async (subject,query,event) => {
 };
 
 logoutUser = async () => {
-    await this.setState({loggedIn: false} );
+    await this.setState({loggedIn: false, querylist: []} );
 };
 
 addUserresponse = async (response, queryId, userHash, event) => {
