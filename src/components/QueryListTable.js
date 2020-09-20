@@ -8,7 +8,7 @@ class QueryListTable extends Component {
     render() {
         return (
             <div>
-                <Link className="logoutBtn" to={{
+                <Link onClick={async () => {await this.props.logoutUser()}} className="logoutBtn" to={{
                     pathname:'/login'
                 }} >Log out!</Link>
 

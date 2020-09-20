@@ -129,6 +129,10 @@ handleSendQuery = async (subject,query,event) => {
     });
 };
 
+logoutUser = async () => {
+    await this.setState({loggedIn: false} );
+};
+
 addUserresponse = async (response, queryId, userHash, event) => {
     event.preventDefault();
 
@@ -178,9 +182,9 @@ addUserresponse = async (response, queryId, userHash, event) => {
               </div> */}
             <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
             <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-            <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
-            <Route path="/QueryListTable" component={() => <QueryListTable querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
-            <Route path="/queryChatWindow" component={() => <QueryChatWindow userHash={this.state.userHash} querylist={this.state.querylist} addUserresponse={this.addUserresponse}/>}/>
+            <Route path="/sendquery" component={() => <SendQuery logoutUser={this.logoutUser} userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
+            <Route path="/QueryListTable" component={() => <QueryListTable logoutUser={this.logoutUser} querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
+            <Route path="/queryChatWindow" component={() => <QueryChatWindow logoutUser={this.logoutUser} userHash={this.state.userHash} querylist={this.state.querylist} addUserresponse={this.addUserresponse}/>}/>
           </div>
           </Router>
       );

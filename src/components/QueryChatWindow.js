@@ -29,9 +29,8 @@ class QueryChatWindow extends Component {
 
         return (
             <div>
-                <Link className="logoutBtn" to={{
-                    pathname:'/login',
-                    
+                <Link onClick={async () => {await this.props.logoutUser()}} className="logoutBtn" to={{
+                    pathname:'/login'
                 }} >Log out!</Link>
                 <div className="chatScreenWrapper">
                     <div className="backBtnWrapper">

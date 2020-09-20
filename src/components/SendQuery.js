@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
-function SendQuery({handleSendQuery}) {
+function SendQuery({handleSendQuery, logoutUser}) {
 
     const [subject, setSubject] = useState("");
     const [query, setQuery] = useState("");
@@ -14,9 +14,9 @@ function SendQuery({handleSendQuery}) {
   return (
 
     <div>
-        <Link className="logoutBtn" to={{
-                    pathname:'/login'
-                }} >Log out!</Link>
+        <Link onClick={async () => {await logoutUser()}} className="logoutBtn" to={{
+            pathname:'/login'
+        }} >Log out!</Link>
 
 <NavBar/>
 
