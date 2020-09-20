@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from './NavBar';
 
 function SendQuery({handleSendQuery}) {
 
@@ -10,6 +11,10 @@ function SendQuery({handleSendQuery}) {
     }
 
   return (
+
+    <div>
+
+<NavBar/>
 
     <div className="SendQuery">
      <div className="sendQueryTitle">Send Your Query!</div>
@@ -29,6 +34,7 @@ function SendQuery({handleSendQuery}) {
         </div>
     </div>
 
+    </div>
     </div>
   );
 }

@@ -170,12 +170,12 @@ addUserresponse = async (response, queryId, userHash, event) => {
       return (
           <Router>
             <div className="App">
-              <div className="NavBarWrapper">
+              {/* <div className="NavBarWrapper">
                 <div className="NavBar">
                   <NavLink className="NavItems"  to="/sendquery" activeStyle={{color: '#fff', background: '#3c72a7'}}>To Send query</NavLink>
                   <NavLink className="NavItems" to='/QueryListTable' activeStyle={{color: '#fff', background: '#3c72a7'}} render={props => (<QueryListTable {...props} querylist={this.state.querylist}/>)}>To query list</NavLink>
                 </div>
-              </div>
+              </div> */}
             <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
             <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
             <Route path="/sendquery" component={() => <SendQuery userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
