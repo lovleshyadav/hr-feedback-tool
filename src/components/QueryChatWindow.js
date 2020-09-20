@@ -3,6 +3,8 @@ import QueryChatForm from './QueryChatForm';
 import QueryChat from './QueryChat';
 // import {addUserHash, getUserFeedbacks, isLoggedIn} from "../actions";
 import {connect} from "react-redux";
+import { Link } from 'react-router-dom';
+
 class QueryChatWindow extends Component {
     
     queryresponse = {response: {response: [
@@ -27,14 +29,26 @@ class QueryChatWindow extends Component {
 
         return (
             <div>
-                {/* <button onClick={createBrowserHistory.goBack}>Back</button> */}
-
-            <div className="chatScreenWrapper">
-                <div className="queryChatWindow">
-                    <QueryChat queryresponse={this.queryresponse}/>
+                <Link className="logoutBtn" to={{
+                    pathname:'/login',
+                    
+                }} >Log out!</Link>
+                <div className="chatScreenWrapper">
+                    <div className="backBtnWrapper">
+                    <Link className="backBtn" to={{
+                    pathname:'/QueryListTable',
+                    queryresponse:{
+                        response: this.props.query
+                    },
+                    userHash: this.props.userHash
+                }} >Back</Link>
+                    </div>
+                
+                    <div className="queryChatWindow">
+                        <QueryChat queryresponse={this.queryresponse}/>
+                    </div>
+                    <QueryChatForm userHash={this.props.userHash} queryresponse={this.queryresponse} addUserresponse={this.props.addUserresponse}/>
                 </div>
-                <QueryChatForm userHash={this.props.userHash} queryresponse={this.queryresponse} addUserresponse={this.props.addUserresponse}/>
-            </div>
             </div>
 
         )

@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import QueryListNav from './QueryListNav';
 import QueryList from './QueryList';
 import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 class QueryListTable extends Component {
     render() {
         return (
             <div>
+                <Link className="logoutBtn" to={{
+                    pathname:'/login'
+                }} >Log out!</Link>
+
                 <NavBar/>
             <div className="queryList">
                 <QueryListNav/>

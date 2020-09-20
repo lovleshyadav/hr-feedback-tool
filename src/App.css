@@ -404,4 +404,44 @@ ul.queryItem li{
 .queryChatWindow{
   overflow-y: scroll;
   height: 500px;
+  border-top: 1px solid #cecece;
+  margin: 20px 0;
+  padding: 10px 0;
+}
+
+.backBtnWrapper{
+  text-align: right;
+}
+
+.backBtn{
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #144c92;
+  font-size: 15px;
+  box-shadow: 0 0 57px rgba(0,0,0,0.13);
+  cursor: pointer;
+  border: none;
+}
+
+.logoutBtn{
+  color: white;
+  padding: 10px 16px;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #c53131;;
+  font-size: 15px;
+  box-shadow: 0 0 57px rgba(0,0,0,0.13);
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavBar from './NavBar';
+import { Link } from 'react-router-dom';
 
 function SendQuery({handleSendQuery}) {
 
@@ -13,6 +14,9 @@ function SendQuery({handleSendQuery}) {
   return (
 
     <div>
+        <Link className="logoutBtn" to={{
+                    pathname:'/login'
+                }} >Log out!</Link>
 
 <NavBar/>
 
