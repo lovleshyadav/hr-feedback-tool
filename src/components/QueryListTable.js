@@ -12,7 +12,7 @@ class QueryListTable extends Component {
                     pathname:'/login'
                 }} >Log out!</Link>
 
-                <NavBar/>
+                <NavBar userHash={this.props.userHash}/>
             <div className="queryList">
                 <QueryListNav/>
                 <QueryList querylist={this.props.querylist} userHash={this.props.userHash} toggleImportant={this.props.toggleImportant} toggleRead={this.props.toggleRead}/>

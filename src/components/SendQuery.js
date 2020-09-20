@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import NavBar from './NavBar';
 import { Link } from 'react-router-dom';
 
-function SendQuery({handleSendQuery, logoutUser}) {
+function SendQuery({handleSendQuery, logoutUser, userHash}) {
 
     const [subject, setSubject] = useState("");
     const [query, setQuery] = useState("");
@@ -18,7 +18,7 @@ function SendQuery({handleSendQuery, logoutUser}) {
             pathname:'/login'
         }} >Log out!</Link>
 
-<NavBar/>
+<NavBar userHash={userHash}/>
 
     <div className="SendQuery">
      <div className="sendQueryTitle">Send Your Query!</div>
