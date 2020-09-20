@@ -1,90 +1,29 @@
-[
-  {
-    "id": 7.716690067322251,
-    "read": false,
-    "important": false,
-    "querySubject": "Feedback on health care",
-    "queryBody": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read",
-    "userHash": "3ad5a5c499384fed7feef1d4a77d033fdd83081a740053f99b44705c040ef431",
-    "date": "",
-    "response": [
-      {
-        "user": "normal",
-        "response": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "Thanks for raising this concern, can you please let us know the location of this concern which will help us to connect with right insurance provider",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "admin response 1",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "admin response 2",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "admin response 3",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "hurray",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "this is going to be a big screen for a realtime chat on this tool, i think everything is working fine now and we should not have any problem in future",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "nice!!!!!!!!!",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "wow this also has a scroll bar",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "great",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "normal",
-        "response": "user response",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "normal",
-        "response": "addasdas dasdasd asdas das das das d asd asd asd asd as das das da sd asd asd qw erwq d asd asd qw dq das d wd axd aw dqw das daw dweq das cad",
-        "date": "",
-        "time": ""
-      }
-    ]
-  },
+[{
+  "id": 7.716690067322251,
+  "read": false,
+  "important": false,
+  "querySubject": "Feedback on health care",
+  "queryBody": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
+  "status": "pending",
+  "impBtnValue": "important",
+  "readBtnValue": "read",
+  "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
+  "date": "",
+  "response": [
+    {
+      "user": "normal",
+      "response": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
+      "date": "",
+      "time": ""
+    },
+    {
+      "user": "admin",
+      "response": "Thanks for raising this concern, can you please let us know the location of this concern which will help us to connect with right insurance provider",
+      "date": "",
+      "time": ""
+    }
+  ]
+},
   {
     "id": 1.0234238,
     "read": false,
@@ -112,108 +51,6 @@
       {
         "user": "normal",
         "response": "Thank you for your response",
-        "date": "",
-        "time": ""
-      }
-    ]
-  },
-  {
-    "id": 3.741123558468356,
-    "read": false,
-    "important": false,
-    "querySubject": "posting new query",
-    "queryBody": "there is a new reponse",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read",
-    "userHash": "3ad5a5c499384fed7feef1d4a77d033fdd83081a740053f99b44705c040ef431",
-    "date": "",
-    "response": [
-      {
-        "user": "normal",
-        "response": "there is a new reponse",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "normal",
-        "response": "my new response",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "admin ka response",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "2nd respinse",
-        "date": "",
-        "time": ""
-      }
-    ]
-  },
-  {
-    "id": 4.118584094065315,
-    "read": false,
-    "important": false,
-    "querySubject": "dsfds",
-    "queryBody": "sdfsdf",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read",
-    "userHash": "",
-    "date": "",
-    "response": [
-      {
-        "user": "normal",
-        "response": "sdfsdf",
-        "date": "",
-        "time": ""
-      }
-    ]
-  },
-  {
-    "id": 5.879774390594374,
-    "read": false,
-    "important": false,
-    "querySubject": "this is user queruy",
-    "queryBody": "asdasdasd asdsad",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read",
-    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
-    "date": "",
-    "response": [
-      {
-        "user": "normal",
-        "response": "asdasdasd asdsad",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "normal",
-        "response": "asdsadsad",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "asdasd",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "sadasd. asd",
-        "date": "",
-        "time": ""
-      },
-      {
-        "user": "admin",
-        "response": "bgchgv",
         "date": "",
         "time": ""
       }
