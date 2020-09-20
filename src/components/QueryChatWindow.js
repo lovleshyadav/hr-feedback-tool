@@ -3,8 +3,8 @@ import QueryChatForm from './QueryChatForm';
 import QueryChat from './QueryChat';
 // import {addUserHash, getUserFeedbacks, isLoggedIn} from "../actions";
 import {connect} from "react-redux";
-
 class QueryChatWindow extends Component {
+    
     queryresponse = {response: {response: [
         {
             "user": "normal",
@@ -26,11 +26,15 @@ class QueryChatWindow extends Component {
         }
 
         return (
+            <div>
+                {/* <button onClick={createBrowserHistory.goBack}>Back</button> */}
+
             <div className="chatScreenWrapper">
                 <div className="queryChatWindow">
                     <QueryChat queryresponse={this.queryresponse}/>
                 </div>
                 <QueryChatForm userHash={this.props.userHash} queryresponse={this.queryresponse} addUserresponse={this.props.addUserresponse}/>
+            </div>
             </div>
 
         )
