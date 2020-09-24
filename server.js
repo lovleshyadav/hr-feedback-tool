@@ -65,13 +65,34 @@ app.post('/responseToQuery', (req, res) => {
         user = "admin";
     }
 
+    let date_ob = new Date();
+
+    // current date
+    // adjust 0 before single digit date
+    let date = ("0" + date_ob.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = date_ob.getFullYear();
+
+    // current hours
+    let hours = date_ob.getHours();
+
+    // current minutes
+    let minutes = date_ob.getMinutes();
+
+    let responseDate = year + "-" + month + "-" + date;
+    let responseTime = hours + ":" + minutes;
+
     for (const feedback of feedbacks) {
         if (feedback.id === req.body.queryId) {
             let addNewResponse = {
                 "user": user,
                 "response": req.body.response,
-                "date": "",
-                "time": ""
+                "date": responseDate,
+                "time": responseTime
             };
 
             feedback.response.push(addNewResponse);
@@ -108,6 +129,27 @@ app.post('/putFeedbacks', (req, res) => {
     let rawdata = fs.readFileSync('feedbacks.json');
     let feedbacks = JSON.parse(rawdata);
     let queryId = feedbacks.length + 1 + Math.random();
+    let date_ob = new Date();
+
+    // current date
+    // adjust 0 before single digit date
+    let date = ("0" + date_ob.getDate()).slice(-2);
+
+    // current month
+    let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+
+    // current year
+    let year = date_ob.getFullYear();
+
+    // current hours
+    let hours = date_ob.getHours();
+
+    // current minutes
+    let minutes = date_ob.getMinutes();
+
+    let feedbackDate = year + "-" + month + "-" + date;
+    let feedbackTime = hours + ":" + minutes;
+
 
     let newFeedback = {
         "id": queryId,
@@ -115,17 +157,19 @@ app.post('/putFeedbacks', (req, res) => {
         "important": false,
         "querySubject": req.body.subject,
         "queryBody": req.body.query,
+        "location": req.body.location,
         "status": "pending",
         "impBtnValue":"important",
         "readBtnValue":"read",
         "userHash": req.body.userHash,
-        "date": "",
+        "date": feedbackDate,
+        "time": feedbackTime,
         "response": [
             {
                 "user": "normal",
                 "response": req.body.query,
-                "date":"",
-                "time":""
+                "date": feedbackDate,
+                "time": feedbackTime
             }]
     };
 

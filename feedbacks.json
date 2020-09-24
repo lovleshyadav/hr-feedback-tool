@@ -1,29 +1,32 @@
-[{
-  "id": 7.716690067322251,
-  "read": false,
-  "important": false,
-  "querySubject": "Feedback on health care",
-  "queryBody": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
-  "status": "pending",
-  "impBtnValue": "important",
-  "readBtnValue": "read",
-  "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
-  "date": "",
-  "response": [
-    {
-      "user": "normal",
-      "response": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
-      "date": "",
-      "time": ""
-    },
-    {
-      "user": "admin",
-      "response": "Thanks for raising this concern, can you please let us know the location of this concern which will help us to connect with right insurance provider",
-      "date": "",
-      "time": ""
-    }
-  ]
-},
+[
+  {
+    "id": 7.716690067322251,
+    "read": false,
+    "important": false,
+    "querySubject": "Feedback on health care",
+    "queryBody": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
+    "status": "pending",
+    "location": "India",
+    "impBtnValue": "important",
+    "readBtnValue": "read",
+    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
+    "date": "2020-09-25",
+    "time": "0:43",
+    "response": [
+      {
+        "user": "normal",
+        "response": "I am really concerned about health insurance in these times and we do not know if all the hospitals accept our health card. We also do not know how this policy is facilitating us in corona treatment",
+        "date": "2020-09-25",
+        "time": "0:44"
+      },
+      {
+        "user": "admin",
+        "response": "Thanks for raising this concern, can you please let us know the location of this concern which will help us to connect with right insurance provider",
+        "date": "2020-09-25",
+        "time": "0:44"
+      }
+    ]
+  },
   {
     "id": 1.0234238,
     "read": false,
@@ -31,28 +34,30 @@
     "querySubject": "Question regarding Engagement budget",
     "queryBody": "Can we use our engagement budget in the next quater as some of people in my time will not be able to use it due to COVID and need to spend time with their families.",
     "status": "pending",
+    "location": "Bangkok",
     "impBtnValue": "important",
     "readBtnValue": "read",
     "userHash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
-    "date": "",
+    "date": "2020-09-25",
+    "time": "0:43",
     "response": [
       {
         "user": "normal",
         "response": "Can we use our engagement budget in the next quater as some of people in my time will not be able to use it due to COVID and need to spend time with their families.",
-        "date": "",
-        "time": ""
+        "date": "2020-09-25",
+        "time": "0:44"
       },
       {
         "user": "admin",
         "response": "Since this budget is only for this quater, we encourage you to use the budget within this quater. We may issue another budget for the next quater if required",
-        "date": "",
-        "time": ""
+        "date": "2020-09-25",
+        "time": "0:44"
       },
       {
         "user": "normal",
         "response": "Thank you for your response",
-        "date": "",
-        "time": ""
+        "date": "2020-09-25",
+        "time": "0:44"
       }
     ]
   }

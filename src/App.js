@@ -115,7 +115,8 @@ handleSendQuery = async (subject,query,event) => {
     var payload = {
         "subject": subject,
         "query": query,
-        "userHash": this.state.userHash
+        "userHash": this.state.userHash,
+        "location": "Add real location here"
     };
 
     await fetch('/putFeedbacks', {
