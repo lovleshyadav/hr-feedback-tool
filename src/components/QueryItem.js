@@ -41,7 +41,7 @@ export class QueryItem extends Component {
     }
 
     render() {
-        const  { id, querySubject , queryBody, status, impBtnValue, readBtnValue} = this.props.query;
+        const  { id, querySubject , queryBody, location, date} = this.props.query;
         const index = this.props.index;
         return (
             <Link to={{
@@ -56,6 +56,8 @@ export class QueryItem extends Component {
                 }}  className="queryItem">
                     <li>
                         <p className="queryIndex">{index+'.'}</p>
+                        <p className="querydate">{date}</p>
+                        <p className="querylocation">{location}</p>
                         <p className="querySubject" style={this.getStyleForQuerySubject()}>{querySubject}</p>
                         <p className="queryBody">{queryBody}</p>
                         {/* <p className="queryStatus" style={this.getStyleForStatus()}>{status}</p> */}
