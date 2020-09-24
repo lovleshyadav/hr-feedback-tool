@@ -25,7 +25,7 @@ function SendQuery({handleSendQuery, logoutUser, userHash}) {
      <div className="sendQueryTitle">Send Your Query!</div>
     <div className="query">
         <div className="formWrapper">
-            <form onSubmit={handleSendQuery.bind(this, subject, query)}>
+            <form onSubmit={handleSendQuery.bind(this, subject, query, location)}>
                 <div className="field">
                     <input type="text" id="username" className="input" placeholder="Subject" value={subject} onChange={e => setSubject(e.target.value)} />
                 </div>
