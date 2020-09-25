@@ -30,7 +30,9 @@ class ChatResponse extends Component {
                 backgroundColor: '#3c72a7',
                 borderRadius: '10px',
                 float: 'right',
-                width: '70%'
+                width: '70%',
+                display: 'flex',
+                flexDirection: 'column'
             }
         }
 
@@ -42,19 +44,21 @@ class ChatResponse extends Component {
                 backgroundColor: '#797979',
                 borderRadius: '10px',
                 width: '70%',
-                float: 'left'
+                float: 'left',
+                display: 'flex',
+                flexDirection: 'column'
             }
         }
     }
 
     render() {
-        // console.log(this.props.response);
+        console.log(this.props.response);
 
-        const  { response} = this.props.response;
+        const  { response, time, date} = this.props.response;
         return (
             <div className="queryResponseWrapper" style={this.getStyleForChatWrapper()}>
                 <div className="queryResponse">
-                    <p style={this.getStyleForChat()}>{response}</p>
+        <p style={this.getStyleForChat()}>{response}<span className="chatDateTime">{date} {time}</span></p>
                 </div>
             </div>
         )
