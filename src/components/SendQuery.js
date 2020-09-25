@@ -10,7 +10,6 @@ function SendQuery({handleSendQuery, logoutUser, userHash}) {
 
     const handleLocationChange = (location) => {
         setLocation(location);
-        console.log(location);
     }
 
     function validateForm() {
