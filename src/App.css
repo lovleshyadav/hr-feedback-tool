@@ -463,3 +463,7 @@ ul.queryItem li{
   font-size: 11px;
   color: rgb(230, 230, 230);
 }
+
+.querylocation {
+  min-width: 100px;
+}

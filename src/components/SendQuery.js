@@ -8,6 +8,11 @@ function SendQuery({handleSendQuery, logoutUser, userHash}) {
     const [query, setQuery] = useState("");
     const [location, setLocation] = useState("");
 
+    const handleLocationChange = (location) => {
+        setLocation(location);
+        console.log(location);
+    }
+
     function validateForm() {
         return subject.length > 0 && query.length > 0 && location.length > 0;
     }
@@ -31,10 +36,14 @@ function SendQuery({handleSendQuery, logoutUser, userHash}) {
                 </div>
                 <div className="field locationDropDown">
                 <label>Location: </label>
-                    <select id="location" value={location} onChange={e => setLocation(e.target.value)}>
-                        <option value="APAC">APAC</option>
-                        <option value="AMER">AMER</option>
-                        <option value="EMEA">EMEA</option>
+                    <select name="location" value={location} onChange={event => handleLocationChange(event.target.value)}>
+                        <option id="APAC - India">APAC - India</option>
+                        <option id="APAC - Thailand">APAC - Thailand</option>
+                        <option id="IL - Be'er Sheva">IL - Be'er Sheva</option>
+                        <option id="IL - Ramat Gan">IL - Ramat Gan</option>
+                        <option id="UK - London">UK - London</option>
+                        <option id="US - LA">US - LA</option>
+                        <option id="US - NY">US - NY</option>
                     </select>
                 </div>
                 <div className="field">
