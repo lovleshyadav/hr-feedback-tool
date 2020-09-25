@@ -60,27 +60,5 @@
         "time": "0:44"
       }
     ]
-  },
-  {
-    "id": 3.615366902046948,
-    "read": false,
-    "important": false,
-    "querySubject": "Location test AMER",
-    "queryBody": "AMER",
-    "location": "Add real location here",
-    "status": "pending",
-    "impBtnValue": "important",
-    "readBtnValue": "read",
-    "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
-    "date": "2020-09-25",
-    "time": "3:33",
-    "response": [
-      {
-        "user": "normal",
-        "response": "AMER",
-        "date": "2020-09-25",
-        "time": "3:33"
-      }
-    ]
   }
 ]
