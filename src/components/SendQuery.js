@@ -36,6 +36,7 @@ function SendQuery({handleSendQuery, logoutUser, userHash}) {
                 <div className="field locationDropDown">
                 <label>Location: </label>
                     <select name="location" value={location} onChange={event => handleLocationChange(event.target.value)}>
+                        <option id="blank"></option>
                         <option id="APAC - India">APAC - India</option>
                         <option id="APAC - Thailand">APAC - Thailand</option>
                         <option id="IL - Be'er Sheva">IL - Be'er Sheva</option>
