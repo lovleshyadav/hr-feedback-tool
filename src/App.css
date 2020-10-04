@@ -109,7 +109,7 @@ li{
 }
 
 .loginHelp::after{
- content:'Please use some unique user name (eg: Taboola email) and password if you are using the tool for first time';
+ content:'Please use unique user-name (eg: Taboola email) and password if you are using the tool for first time';
  position: absolute;
  bottom: 50%;
  right: -270px;
@@ -256,7 +256,6 @@ li{
   top: 50%;
   transform: translate(-50%, -50%);
   width: 90%;
-  padding: 0 30px 30px 30px;
   max-height: 70%;
   max-width: 80%;
   overflow-y: scroll;
