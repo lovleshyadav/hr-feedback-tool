@@ -466,3 +466,7 @@ ul.queryItem li{
 .querylocation {
   min-width: 100px;
 }
+
+.queryResponse{
+  width: 70%;
+}

@@ -30,7 +30,6 @@ class ChatResponse extends Component {
                 backgroundColor: '#3c72a7',
                 borderRadius: '10px',
                 float: 'right',
-                width: '70%',
                 display: 'flex',
                 flexDirection: 'column'
             }
@@ -43,7 +42,6 @@ class ChatResponse extends Component {
                 padding: '5px 10px',
                 backgroundColor: '#797979',
                 borderRadius: '10px',
-                width: '70%',
                 float: 'left',
                 display: 'flex',
                 flexDirection: 'column'
