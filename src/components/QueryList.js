@@ -1,13 +1,14 @@
 import React, { Component } from "react";
-import QueryItem from './QueryItem';
 import PropTypes from 'prop-types';
-import DataTable from 'react-data-table-component';
 import MaterialTable, { MTableBodyRow } from 'material-table'
 import { Link } from 'react-router-dom';
 import { Button} from 'react-bootstrap';
+import {connect} from "react-redux";
+import {selectFeedback} from "../actions";
+import {QueryItem} from "./QueryItem";
 
 class QueryList extends Component {
-    
+
     render() {
         // console.log(this.props.querylist);
         const data = this.props.querylist.slice(0).reverse();
@@ -76,6 +77,9 @@ class QueryList extends Component {
                   onClick: (event, rowData) => alert("You saved " + rowData.name)
                 }
               ]}
+            onRowClick={async (event, rowData) => {
+                await this.props.selectFeedback(rowData.id);
+            }}
             components={{
                 Action: props => (
                     <Link to={{
@@ -88,10 +92,21 @@ class QueryList extends Component {
                   <Button
                     color="primary"
                     variant="contained"
-                    style={{textTransform: 'none'}}
+                    style={{textTransform: 'none',
+                        color: 'white',
+                        padding: '10px 16px',
+                        textAlign: 'center',
+                        marginRight: '10px',
+                        marginBottom: '15px',
+                        marginTop: '10px',
+                        borderRadius: '10px',
+                        backgroundColor: '#144c92',
+                        fontSize: '15px',
+                        boxShadow: '0 0 57px rgba(0,0,0,0.13)',
+                        cursor: 'pointer',
+                        border: 'none'}}
                     size="small"
-                  >
-                    Go To conversation
+                  >Reply
                   </Button>
                   </Link>
                 ),
@@ -103,6 +118,19 @@ class QueryList extends Component {
 
 QueryList.propTypes = {
     querylist: PropTypes.array.isRequired
-}
+};
 
-export default QueryList;
+const mapStateToProps = state => ({
+    selectedFeedback: state.selectedFeedback
+});
+
+const mapDispatchToProps = () => {
+    return {
+        selectFeedback
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps()
+)(QueryList);
