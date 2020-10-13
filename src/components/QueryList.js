@@ -36,7 +36,7 @@ class QueryList extends Component {
         return (
 
         <MaterialTable
-            icons={{ Filter: () => <span class="material-icons MuiIcon-root MuiIcon-fontSizeSmall" aria-hidden="true" aria-describedby="mui-88980">search</span> }}
+            icons={{ Filter: () => <span className="material-icons MuiIcon-root MuiIcon-fontSizeSmall" aria-hidden="true" aria-describedby="mui-88980">search</span> }}
             title="My Query List"
             data={data}
             columns={columns}
