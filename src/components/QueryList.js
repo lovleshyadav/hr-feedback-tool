@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import MaterialTable, { MTableBodyRow } from 'material-table'
+import MaterialTable from 'material-table'
 import { Link } from 'react-router-dom';
 import { Button} from 'react-bootstrap';
 import {connect} from "react-redux";
 import {selectFeedback} from "../actions";
-import {QueryItem} from "./QueryItem";
 
 class QueryList extends Component {
 

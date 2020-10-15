@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, NavLink } from 'react-router-dom';
+import {BrowserRouter as Router } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import {connect} from "react-redux";
 import {addUserHash, isLoggedIn, getUserFeedbacks} from "./actions";
@@ -11,8 +11,6 @@ import QueryChatWindow from './components/QueryChatWindow';
 
 import './App.css';
 import {sha256} from "js-sha256";
-import {selectFeedback} from "./actions";
-import {QueryItem} from "./components/QueryItem";
 
 class App extends Component {
 

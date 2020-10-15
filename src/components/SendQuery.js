@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import NavBar from './NavBar';
 import { Link, Redirect } from 'react-router-dom';
-import { render } from "@testing-library/react";
-import QueryListTable from './QueryListTable';
 
 function SendQuery({handleSendQuery, logoutUser, userHash, redirect, redirectUser}) {
 
@@ -20,7 +18,6 @@ function SendQuery({handleSendQuery, logoutUser, userHash, redirect, redirectUse
 
 
     if(redirect){
-        // return(<QueryListTable querylist={this.state.querylist}/>)
         redirectUser();
         return(<Redirect to='/QueryListTable'  />)
     }
@@ -41,13 +38,27 @@ function SendQuery({handleSendQuery, logoutUser, userHash, redirect, redirectUse
                                 <label>Location: </label>
                                     <select name="location" value={location} onChange={event => handleLocationChange(event.target.value)}>
                                         <option id="blank"></option>
-                                        <option id="APAC - India">APAC - India</option>
-                                        <option id="APAC - Thailand">APAC - Thailand</option>
-                                        <option id="IL - Be'er Sheva">IL - Be'er Sheva</option>
-                                        <option id="IL - Ramat Gan">IL - Ramat Gan</option>
-                                        <option id="UK - London">UK - London</option>
-                                        <option id="US - LA">US - LA</option>
-                                        <option id="US - NY">US - NY</option>
+                                        <option id="NYC">NYC</option>
+                                        <option id="LA">LA</option>
+                                        <option id="Tel Aviv">Tel Aviv</option>
+                                        <option id="Chicago">Chicago</option>
+                                        <option id="London">London</option>
+                                        <option id="Madrid">Madrid</option>
+                                        <option id="Paris">Paris</option>
+                                        <option id="Berlin">Berlin</option>
+                                        <option id="Mexico City">Mexico City</option>
+                                        <option id="São Paulo">São Paulo</option>
+                                        <option id="Seol">Seol</option>
+                                        <option id="Sydney">Sydney</option>
+                                        <option id="Shanghai">Shanghai</option>
+                                        <option id="Tokyo">Tokyo</option>
+                                        <option id="Beijing">Beijing</option>
+                                        <option id="New Delhi">New Delhi</option>
+                                        <option id="Bangkok">Bangkok</option>
+                                        <option id="Istanbul">Istanbul</option>
+                                        <option id="Seattle">Seattle</option>
+                                        <option id="Choose not to answer">Choose not to answer</option>
+                                        <option id="Other">Other</option>
                                     </select>
                                 </div>
                                 <div className="field">
