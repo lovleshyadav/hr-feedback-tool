@@ -3,6 +3,7 @@ import {BrowserRouter as Router } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import {connect} from "react-redux";
 import {addUserHash, isLoggedIn, getUserFeedbacks} from "./actions";
+import crypto from 'crypto';
 
 import Login from './components/Login';
 import SendQuery from './components/SendQuery';
@@ -11,6 +12,7 @@ import QueryChatWindow from './components/QueryChatWindow';
 
 import './App.css';
 import {sha256} from "js-sha256";
+import configFile from './reactConfig.json';
 
 class App extends Component {
 
@@ -19,24 +21,24 @@ class App extends Component {
       querylist: [],
       userHash: "",
       redirect: false
-  }
+  };
 
-    componentDidMount() {
-        // Call our fetch function below once the component mounts
-        // this.callBackendAPI()
-        //     .then(res => this.setState({querylist: res.data}))
-        //      .catch(err => console.log(err));
-    }
-    // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
-    callBackendAPI = async () => {
-        const response = await fetch('/getFeedbacks');
-        const body = await response.json();
-        console.log(body);
-        if (response.status !== 200) {
-            throw Error(body.message)
-        }
-        return body;
-    };
+    // componentDidMount() {
+    //     // Call our fetch function below once the component mounts
+    //     // this.callBackendAPI()
+    //     //     .then(res => this.setState({querylist: res.data}))
+    //     //      .catch(err => console.log(err));
+    // }
+    // // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+    // callBackendAPI = async () => {
+    //     const response = await fetch('/getFeedbacks');
+    //     const body = await response.json();
+    //     console.log(body);
+    //     if (response.status !== 200) {
+    //         throw Error(body.message)
+    //     }
+    //     return body;
+    // };
 
   toggleImportant = (id) => {
     this.setState({ querylist: this.state.querylist.map(
@@ -54,7 +56,26 @@ class App extends Component {
         return queryItem;
       }
     ) })
-}
+};
+
+encryptMessage = async (text) => {
+    let iv = await crypto.randomBytes(configFile.IVLength);
+    let cipher = await crypto.createCipheriv(configFile.algorithm, Buffer.from(configFile.normalHash, 'hex'), iv);
+    let encrypted = await cipher.update(text);
+    encrypted = await Buffer.concat([encrypted, cipher.final()]);
+    return iv.toString('hex') + ':' + encrypted.toString('hex');
+};
+
+decryptMessage = async (text) => {
+    let textParts = await text.split(':');
+    let iv = await Buffer.from(textParts.shift(), 'hex');
+    let encryptedText = await Buffer.from(textParts.join(':'), 'hex');
+    let decipher = await crypto.createDecipheriv(configFile.algorithm, Buffer.from(configFile.normalHash, 'hex'), iv);
+    let decrypted = await decipher.update(encryptedText);
+    decrypted = await Buffer.concat([decrypted, decipher.final()]);
+    console.log("Decrypted: ", decrypted.toString());
+    return decrypted.toString();
+};
 
 toggleRead = (id) => {
   this.setState({ querylist: this.state.querylist.map(
@@ -98,6 +119,33 @@ handleLogin = async (email,password,event) => {
         },
         body: JSON.stringify(payload)
     }).then(async (response) => response.json()).then(async (result) => {
+        // let decryptedQueryList = result.data.map( async obj => {
+        //     let decryptObject = {};
+        //     decryptObject.subject = this.decryptMessage(obj.querySubject);
+        //     decryptObject.query = this.decryptMessage(obj.queryBody);
+        //     decryptObject.location = this.decryptMessage(obj.location);
+        //     decryptObject.id = obj.id;
+        //     decryptObject.read = obj.read;
+        //     decryptObject.important = obj.important;
+        //     decryptObject.status = obj.status;
+        //     decryptObject.impBtnValue = obj.impBtnValue;
+        //     decryptObject.readBtnValue = obj.readBtnValue;
+        //     decryptObject.userHash = obj.userHash;
+        //     decryptObject.date = obj.date;
+        //     decryptObject.time = obj.time;
+        //     decryptObject.response = obj.response.map( userResponses => {
+        //         let decrypteedResponse = {};
+        //         decrypteedResponse.response = this.decryptMessage(userResponses.response);
+        //         decrypteedResponse.user = userResponses.user;
+        //         decrypteedResponse.date = userResponses.date;
+        //         decrypteedResponse.time = userResponses.time;
+        //         return userResponses;
+        //     });
+        //     return decryptObject;
+        // });
+        result.data.map(obj => {
+            this.decryptMessage(obj.querySubject);
+        });
         await this.setState({querylist: result.data});
         await this.props.getUserFeedbacks(result.data);
         await this.props.addUserHash(userHash);
@@ -111,10 +159,10 @@ handleSendQuery = async (subject,query,location,event) => {
 
     // Sending new query to DB
     var payload = {
-        "subject": subject,
-        "query": query,
+        "subject": this.encryptMessage(subject),
+        "query": this.encryptMessage(query),
         "userHash": this.state.userHash,
-        "location": location
+        "location": this.encryptMessage(location)
     };
 
     await fetch('/putFeedbacks', {
@@ -124,7 +172,17 @@ handleSendQuery = async (subject,query,location,event) => {
         },
         body: JSON.stringify(payload)
     }).then(async (response) => response.json()).then(async (result) => {
-        await this.setState({querylist: result.data, redirect: true})
+        let decryptedQueryList = result.data.map( async obj => {
+            obj.subject = await this.decryptMessage(obj.querySubject);
+            obj.query = await this.decryptMessage(obj.queryBody);
+            obj.location = await this.decryptMessage(obj.location);
+            obj.response = await obj.response.map( async userResponses => {
+                userResponses.response = await this.decryptMessage(userResponses.response);
+                return userResponses;
+            });
+            return obj;
+        });
+        await this.setState({querylist: decryptedQueryList, redirect: true});
     });
 };
 
@@ -141,7 +199,7 @@ addUserresponse = async (response, queryId, userHash, event) => {
     var payload = {
         "userHash": userHash,
         "queryId": queryId,
-        "response": response
+        "response": this.encryptMessage(response)
     };
 
     fetch('/responseToQuery', {
@@ -151,7 +209,17 @@ addUserresponse = async (response, queryId, userHash, event) => {
         },
         body: JSON.stringify(payload)
     }).then((response) => response.json()).then(async (result) => {
-        await this.setState({querylist: result.data})
+        let decryptedQueryList = result.data.map( async obj => {
+            obj.subject = await this.decryptMessage(obj.querySubject);
+            obj.query = await this.decryptMessage(obj.queryBody);
+            obj.location = await this.decryptMessage(obj.location);
+            obj.response = await obj.response.map( async userResponses => {
+                userResponses.response = await this.decryptMessage(userResponses.response);
+               return userResponses;
+           });
+           return obj;
+        });
+        await this.setState({querylist: decryptedQueryList});
     });
 
     // Now get user queries
