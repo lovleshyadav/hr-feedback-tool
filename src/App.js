@@ -111,12 +111,12 @@ handleSendQuery = async (date,subject,query,location,realusername,event) => {
 
     // Sending new query to DB
     var payload = {
-        "date": date, //incident date
+        "incidentDate": date, //incident date
         "subject": subject,
         "query": query,
         "userHash": this.state.userHash,
         "location": location,
-        "name": realusername
+        "userName": realusername
     };
 
     await fetch('/putFeedbacks', {
