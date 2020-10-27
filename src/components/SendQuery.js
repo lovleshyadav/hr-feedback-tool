@@ -34,14 +34,14 @@ function SendQuery({handleSendQuery, logoutUser, userHash, redirect, redirectUse
                         <div className="formWrapper">
                             <form onSubmit={handleSendQuery.bind(this, date, subject, query, location, realusername)}>
                                 <div className="field">
-                                    <label for="incidentDate">When did the incident occur? </label>
+                                    <label for="incidentDate">When did the incident occur?<span className="impStar">*</span> </label>
                                     <input type="date" id="incidentDate" name="incidentDate" value={date} onChange={e => setDate(e.target.value)}/>
                                 </div>
                                 <div className="field">
-                                    <input type="text" id="subject" className="input" placeholder="Subject" value={subject} onChange={e => setSubject(e.target.value)} />
+                                    <input type="text" id="subject" className="input" placeholder="Subject (mandatory)" value={subject} onChange={e => setSubject(e.target.value)} />
                                 </div>
                                 <div className="field locationDropDown">
-                                    <label>Location: </label>
+                                    <label>Location:<span className="impStar">*</span> </label>
                                     <select name="location" value={location} onChange={event => handleLocationChange(event.target.value)}>
                                         <option id="blank"></option>
                                         <option id="NYC">NYC</option>
@@ -68,10 +68,10 @@ function SendQuery({handleSendQuery, logoutUser, userHash, redirect, redirectUse
                                     </select>
                                 </div>
                                 <div className="field">
-                                    <textarea id="query" className="input" placeholder="Please describe the incident" value={query} onChange={e => setQuery(e.target.value)} />
+                                    <textarea id="query" className="input" placeholder="Please describe the incident (mandatory)" value={query} onChange={e => setQuery(e.target.value)} />
                                 </div>
                                 <div className="field">
-                                    <input type="text" id="realusername" className="input" placeholder="Enter your name if you wish to identify yourself" value={realusername} onChange={e => setRealusername(e.target.value)} />
+                                    <input type="text" id="realusername" className="input" placeholder="Enter your name if you wish to identify yourself (optional)" value={realusername} onChange={e => setRealusername(e.target.value)} />
                                 </div>
                                 <div className="sendQueryBtnWrapper">
                                     <button className="sendQueryBtn" disabled={!validateForm()}>Send!</button>
