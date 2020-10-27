@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, NavLink } from 'react-router-dom';
+import {BrowserRouter as Router } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
 import {connect} from "react-redux";
 import {addUserHash, isLoggedIn, getUserFeedbacks} from "./actions";
@@ -11,16 +11,14 @@ import QueryChatWindow from './components/QueryChatWindow';
 
 import './App.css';
 import {sha256} from "js-sha256";
-import {selectFeedback} from "./actions";
-import {QueryItem} from "./components/QueryItem";
 
 class App extends Component {
 
   state = {
       loggedIn: false,
       querylist: [],
-      userHash: ""
-
+      userHash: "",
+      redirect: false
   }
 
     componentDidMount() {
@@ -108,15 +106,17 @@ handleLogin = async (email,password,event) => {
     event.preventDefault();
 };
 
-handleSendQuery = async (subject,query,location,event) => {
+handleSendQuery = async (date,subject,query,location,realusername,event) => {
     event.preventDefault();
 
     // Sending new query to DB
     var payload = {
+        "incidentDate": date, //incident date
         "subject": subject,
         "query": query,
         "userHash": this.state.userHash,
-        "location": location
+        "location": location,
+        "userName": realusername
     };
 
     await fetch('/putFeedbacks', {
@@ -126,14 +126,16 @@ handleSendQuery = async (subject,query,location,event) => {
         },
         body: JSON.stringify(payload)
     }).then(async (response) => response.json()).then(async (result) => {
-        await this.setState({querylist: result.data})
+        await this.setState({querylist: result.data, redirect: true})
     });
 };
 
 logoutUser = async () => {
     await this.setState({loggedIn: false, querylist: []} );
 };
-
+redirectUser = async () => {
+  await this.setState({redirect: false} );
+};
 addUserresponse = async (response, queryId, userHash, event) => {
     event.preventDefault();
 
@@ -177,7 +179,7 @@ addUserresponse = async (response, queryId, userHash, event) => {
             <div className="App">
             <Route path="/" exact component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
             <Route path="/login" component={ () => <Login loggedIn={this.state.loggedIn} handleLogin={this.handleLogin}/> }/>
-            <Route path="/sendquery" component={() => <SendQuery logoutUser={this.logoutUser} userHash={this.state.userHash} handleSendQuery={this.handleSendQuery}/>}/>
+            <Route path="/sendquery" component={() => <SendQuery redirectUser={this.redirectUser} logoutUser={this.logoutUser} userHash={this.state.userHash} handleSendQuery={this.handleSendQuery} redirect={this.state.redirect}/>}/>
             <Route path="/QueryListTable" component={() => <QueryListTable logoutUser={this.logoutUser} querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
             <Route path="/queryChatWindow" component={() => <QueryChatWindow logoutUser={this.logoutUser} userHash={this.state.userHash} querylist={this.state.querylist} addUserresponse={this.addUserresponse}/>}/>
           </div>

@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
-import MaterialTable, { MTableBodyRow } from 'material-table'
+import MaterialTable from 'material-table'
 import { Link } from 'react-router-dom';
 import { Button} from 'react-bootstrap';
 import {connect} from "react-redux";
 import {selectFeedback} from "../actions";
-import {QueryItem} from "./QueryItem";
 
 class QueryList extends Component {
 
     render() {
         // console.log(this.props.querylist);
         const data = this.props.querylist.slice(0).reverse();
-        console.log(data);
+        // console.log(data);
         const columns = [
             {
                 title: 'Date',
@@ -34,18 +33,9 @@ class QueryList extends Component {
         ];
 
         return (
-        // <MaterialTable
-        //     data={data}
-        //     columns={columns}
-        //     options={{
-        //         filtering:true,
-        //         exportButton: true,
-        //         grouping: true,
-        //         selection: true
-        //     }}
-        // />
 
         <MaterialTable
+            icons={{ Filter: () => <span className="material-icons MuiIcon-root MuiIcon-fontSizeSmall" aria-hidden="true" aria-describedby="mui-88980">search</span> }}
             title="My Query List"
             data={data}
             columns={columns}
@@ -53,23 +43,29 @@ class QueryList extends Component {
                 filtering:true,
                 exportButton: true,
                 grouping: true,
-                // selection: true
+                actionsColumnIndex: -1
             }}
-            // components={{
-            //     Row: props => (
-            //         <Link to={{
-            //             pathname:'/queryChatWindow',
-            //             queryresponse:{
-            //                 response: this.props.query
-            //             },
-            //             userHash: this.props.userHash
-            //         }} >
-            //             <div style={{ backgroundColor: '#e8eaf5' }}>
-            //                 <MTableBodyRow {...props} />
-            //             </div>
-            //         </Link>
-            //     )
-            // }}
+            localization={{
+                grouping: {
+                    placeholder: 'Hi',
+                    groupedBy: 'bye' 
+                },
+                pagination: {
+                    labelDisplayedRows: '{from}-{to} of {count}'
+                },
+                toolbar: {
+                    nRowsSelected: '{0} row(s) selected'
+                },
+                header: {
+                    actions: ''
+                },
+                body: {
+                    emptyDataSourceMessage: 'No records to display',
+                    filterRow: {
+                        filterTooltip: 'search'
+                    }
+                }
+            }}
             actions={[
                 {
                   icon: 'save',
@@ -94,19 +90,19 @@ class QueryList extends Component {
                     variant="contained"
                     style={{textTransform: 'none',
                         color: 'white',
-                        padding: '10px 16px',
+                        padding: '8px 14px',
                         textAlign: 'center',
                         marginRight: '10px',
                         marginBottom: '15px',
                         marginTop: '10px',
                         borderRadius: '10px',
                         backgroundColor: '#144c92',
-                        fontSize: '15px',
+                        fontSize: '13px',
                         boxShadow: '0 0 57px rgba(0,0,0,0.13)',
                         cursor: 'pointer',
                         border: 'none'}}
                     size="small"
-                  >Reply
+                  >Go To Conversation
                   </Button>
                   </Link>
                 ),

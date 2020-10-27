@@ -158,6 +158,8 @@ app.post('/putFeedbacks', (req, res) => {
         "querySubject": req.body.subject,
         "queryBody": req.body.query,
         "location": req.body.location,
+        "incidentDate": req.body.incidentDate,
+        "userName": req.body.userName,
         "status": "pending",
         "impBtnValue":"important",
         "readBtnValue":"read",

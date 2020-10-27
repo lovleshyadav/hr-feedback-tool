@@ -12,6 +12,8 @@
     "userHash": "e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf",
     "date": "2020-09-25",
     "time": "0:43",
+    "incidentDate": "2020-01-12",
+    "userName": "Onizuka",
     "response": [
       {
         "user": "normal",
@@ -40,6 +42,8 @@
     "userHash": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578",
     "date": "2020-09-25",
     "time": "0:43",
+    "incidentDate": "2020-01-12",
+    "userName": "Onizuka",
     "response": [
       {
         "user": "normal",

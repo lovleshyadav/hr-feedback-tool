@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
-// import {}
+import { useSelector } from "react-redux";
+
 function QueryChatForm({userHash, queryresponse, addUserresponse}) {
 
     const [query, setQuery] = useState("");
