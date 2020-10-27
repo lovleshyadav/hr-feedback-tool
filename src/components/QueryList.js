@@ -9,13 +9,17 @@ import {selectFeedback} from "../actions";
 class QueryList extends Component {
 
     render() {
-        // console.log(this.props.querylist);
+        console.log(this.props.querylist);
         const data = this.props.querylist.slice(0).reverse();
         // console.log(data);
         const columns = [
             {
-                title: 'Date',
+                title: 'Date Received',
                 field: 'date'
+            },
+            {
+                title: 'Incident Date',
+                field: 'incidentDate'
             },
             {
                 title: 'Location',
@@ -29,6 +33,10 @@ class QueryList extends Component {
             {
                 title: 'Message',
                 field: 'queryBody'
+            },
+            {
+                title: 'Sender Name',
+                field: 'userName'
             }
         ];
 
