@@ -106,15 +106,17 @@ handleLogin = async (email,password,event) => {
     event.preventDefault();
 };
 
-handleSendQuery = async (subject,query,location,event) => {
+handleSendQuery = async (date,subject,query,location,realusername,event) => {
     event.preventDefault();
 
     // Sending new query to DB
     var payload = {
+        "date": date, //incident date
         "subject": subject,
         "query": query,
         "userHash": this.state.userHash,
-        "location": location
+        "location": location,
+        "name": realusername
     };
 
     await fetch('/putFeedbacks', {
