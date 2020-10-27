@@ -9,7 +9,7 @@ import {selectFeedback} from "../actions";
 class QueryList extends Component {
 
     render() {
-        console.log(this.props.querylist);
+        //console.log(this.props.querylist);
         const data = this.props.querylist.slice(0).reverse();
         // console.log(data);
         const columns = [
