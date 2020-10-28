@@ -48,16 +48,16 @@ class QueryList extends Component {
             data={data}
             columns={columns}
             options={{
-                filtering:true,
+                // filtering:true,
                 exportButton: true,
-                grouping: true,
+                // grouping: true,
                 actionsColumnIndex: -1
             }}
             localization={{
-                grouping: {
-                    placeholder: 'Hi',
-                    groupedBy: 'bye' 
-                },
+                // grouping: {
+                //     placeholder: 'Hi',
+                //     groupedBy: 'bye' 
+                // },
                 pagination: {
                     labelDisplayedRows: '{from}-{to} of {count}'
                 },
