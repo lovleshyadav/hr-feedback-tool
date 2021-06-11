@@ -8,7 +8,7 @@ import Login from './components/Login';
 import SendQuery from './components/SendQuery';
 import QueryListTable from './components/QueryListTable';
 import QueryChatWindow from './components/QueryChatWindow';
-
+import GetHash from './components/GetHash';
 import './App.css';
 import {sha256} from "js-sha256";
 
@@ -182,6 +182,7 @@ addUserresponse = async (response, queryId, userHash, event) => {
             <Route path="/sendquery" component={() => <SendQuery redirectUser={this.redirectUser} logoutUser={this.logoutUser} userHash={this.state.userHash} handleSendQuery={this.handleSendQuery} redirect={this.state.redirect}/>}/>
             <Route path="/QueryListTable" component={() => <QueryListTable logoutUser={this.logoutUser} querylist={this.state.querylist} userHash={this.state.userHash} toggleImportant={this.toggleImportant} toggleRead={this.toggleRead} />} />
             <Route path="/queryChatWindow" component={() => <QueryChatWindow logoutUser={this.logoutUser} userHash={this.state.userHash} querylist={this.state.querylist} addUserresponse={this.addUserresponse}/>}/>
+            <Route path="/gethash" exact component={ () => <GetHash userHash={this.state.userHash}/> }/>
           </div>
           </Router>
       );
