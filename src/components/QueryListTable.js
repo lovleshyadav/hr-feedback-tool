@@ -7,9 +7,13 @@ class QueryListTable extends Component {
     render() {
         return (
             <div>
-                <Link onClick={async () => {await this.props.logoutUser()}} className="logoutBtn" to={{
-                    pathname:'/login'
-                }} >Log out!</Link>
+                <div className="loginBtnAndGetHashWrapper">
+                    <Link to="/gethash" className="getHash">Get Hash</Link> 
+                    <Link onClick={async () => {await this.props.logoutUser()}} className="logoutBtn" to={{
+                        pathname:'/login'
+                    }} >Log out!</Link>
+                </div>
+
 
                 <NavBar userHash={this.props.userHash}/>
             <div className="queryList">
