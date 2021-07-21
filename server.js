@@ -33,6 +33,7 @@ app.use(express.json());
 // admin admin: d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892
 // user user: e172c5654dbc12d78ce1850a4f7956ba6e5a3d2ac40f0925fc6d691ebb54f6bf
 // test test: 37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578
+// New admin access: bf1e6869f634e51eaa710d5f77c840b88d6852201512924d46fe1be660ef8f31
 
 // Get user feedbacks
 app.post('/getUserFeedbacks', (req, res) => {
@@ -40,7 +41,7 @@ app.post('/getUserFeedbacks', (req, res) => {
     let feedbacks = JSON.parse(rawdata);
     let payload = [];
 
-    if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+    if (req.body.userHash === "bf1e6869f634e51eaa710d5f77c840b88d6852201512924d46fe1be660ef8f31") {
         // Sending complete data for admin
         payload = feedbacks;
     } else {
@@ -61,7 +62,7 @@ app.post('/responseToQuery', (req, res) => {
     let feedbacks = JSON.parse(rawdata);
     let user = "normal";
     // let payload = {};
-    if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+    if (req.body.userHash === "bf1e6869f634e51eaa710d5f77c840b88d6852201512924d46fe1be660ef8f31") {
         user = "admin";
     }
 
@@ -110,7 +111,7 @@ app.post('/responseToQuery', (req, res) => {
 
     let payload = [];
 
-    if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+    if (req.body.userHash === "bf1e6869f634e51eaa710d5f77c840b88d6852201512924d46fe1be660ef8f31") {
         // Sending complete data for admin
         payload = feedbacks;
     } else {
@@ -215,7 +216,7 @@ app.post('/putFeedbacks', (req, res) => {
 
     let payload = [];
 
-    if (req.body.userHash === "d82494f05d6917ba02f7aaa29689ccb444bb73f20380876cb05d1f37537b7892") {
+    if (req.body.userHash === "bf1e6869f634e51eaa710d5f77c840b88d6852201512924d46fe1be660ef8f31") {
         // Sending complete data for admin
         payload = feedbacks;
     } else {
