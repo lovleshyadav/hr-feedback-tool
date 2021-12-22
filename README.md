@@ -73,3 +73,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 ### `docker run -p 8091:8091 -d a09ed95070c8` running docker image
 
 ### `docker rmi 9017127bc898` to remove image and `docker rm 9017127bc898` to remove container
+
+sudo docker stop <process-id>
+sudo docker ps
+sudo docker rm <process-id>
+sudo docker images
+sudo docker rmi <image-id>
